@@ -13,19 +13,20 @@
 
 using namespace std;
 
+bool palindrome(string s) {
+    int n = s.length();
+    for(int i = 0; i < n; i++) {
+        if(s[i] != s[n - i - 1]) return false;
+    }
+    return true;
+}
+
 void solve(){
     string s;
     cin >> s;
-    for(int i = 0; i < s.size(); i++){
-        if(s[i] != 'a'){
-            cout << "YES" << endl;
-            if(s[0] != 'a') cout << s + 'a' << endl;
-            else if(s[s.size()-1] != 'a') cout << 'a' + s << endl;
-            else cout << s + 'a' << endl;
-            return;
-        }
-    }
-    cout << "NO" << endl;
+    if(!palindrome('a' + s)) cout << "YES\n" << 'a' + s + "\n";
+    else if(!palindrome(s + 'a')) cout << "YES\n" << s + "a\n";
+    else cout << "NO\n";
 }
 
 int main(){
